@@ -1,0 +1,41 @@
+
+
+
+**Docker file no change, keep it as it is.
+
+**Dockerfile is in testfolder
+
+check whether docker is running or not. It should run.
+
+1. Docker build C:\Users\username\testfolder
+
+command : docker images => will list the docker images.. 
+
+2. docker run -d -it --name=pyC -v C:\Users\username\testfolder:/myfolder 3f54451dcd80 => this is image ID( different for different users)
+
+3. docker exec -it pyC /bin/bash
+
+inside container 
+
+4. apt-get install vim
+
+** mapper.py, reducer.py, inputfiles etc must be present in testfolder( which is mounted to myfolder)
+
+5. for a part)  hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-*.jar -input /myfolder/bigo.txt -output /v -mapper "python /myfolder/mapper.py" -reducer "python /myfolder/reducer.py"
+       b part) 
+       c part)  hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-*.jar -input /myfolder/bigo.txt -output /v -mapper "python /myfolder/mapper3.py" -combiner "python /myfolder/combiner3.py"  -reducer "python /myfolder/reducer3.py"
+       d part)   hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-*.jar -input /myfolder/bigo.txt -output /v -mapper "python /myfolder/mapper4.py"   -reducer "python /myfolder/reducer4.py"
+ ** output will be in the folder named "v", open the file ("part-00000") which is present in the v folder
+
+
+to remove the image
+
+6*. docker rmi imageID
+
+To stop and remove the container
+
+7*. docker container stop containerName
+
+8*. docker container rm containerName
+
+

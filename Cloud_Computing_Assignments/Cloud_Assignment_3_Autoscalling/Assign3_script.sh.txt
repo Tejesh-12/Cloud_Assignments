@@ -1,0 +1,10 @@
+script="""#!/usr/bin/python
+import os
+
+os.system('sudo yum update -y')
+os.system('sudo yum install  httpd -y')
+os.system('sudo service httpd start')
+
+os.system('sudo wget https://assgn3.s3.amazonaws.com/file3.html')
+os.system('sudo cp file3.html /var/www/html/index.html')
+"""

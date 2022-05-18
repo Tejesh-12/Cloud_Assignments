@@ -1,0 +1,27 @@
+#!/usr/bin/python
+ 
+import os
+ 
+os.system('yum install -y python python-dev python-pip')
+os.system('pip install boto3')
+ 
+os.system('yum -y update')
+os.system('yum install -y httpd')
+os.system('service httpd start')
+os.system('cd ~')
+ 
+import boto3
+ 
+ 
+access_id_key = 'ASIAXJKLR5ZWSVGGP4PZ'
+secret_access_key = 'gdk3spqb7DZowZhX66Jyz/TAfk7TSaYuglpe4Tz1'
+session_token_key = 'FwoGZXIvYXdzEIT//////////wEaDLHd/abJs0kpB0t8gyLLAbXltekLyMt9Wcq4gaPWEzSloW53YeqZe1Bnb2T+9+rLgnaTIUJq6TaGhYHsogiUqsKqyuL579ghKu6UlXiYsYL3D8jFwoUCsyegAnUtq3Z5cfLv3gih1i+C0Re/R9hmo25snIt94CReJzN7A8n7S1OsTVZjkbx2aH0Y+nMFXvBHcvFjSTg5QBGjL5v9GsOPNbDYQcxrRreMbQODg51wCV5oMzb0uUIgwiYK8aT5NhcLRH5//LzfuPSqP9D8HY9C7YlL51yEkqIt9DOMKKehr4kGMi07LBi/vl4qbQuTlHfJ9SPYk6ktlc+XWTlkFrQjgLM/Eylpyr2e97AlqSHK89g='
+ 
+ 
+ 
+ 
+ 
+client = boto3.client('s3',aws_access_key_id = access_id_key,aws_secret_access_key = secret_access_key,aws_session_token = session_token_key)
+ 
+ 
+client.download_file('assgn3','file3.html','/var/www/html/'+'index.html')
